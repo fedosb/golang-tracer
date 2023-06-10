@@ -66,8 +66,5 @@ func getCallingClassName() string {
 	pc, _, _, _ := runtime.Caller(2)
 	method := runtime.FuncForPC(pc)
 	methodParts := strings.Split(method.Name(), ".")
-	fullClassName := methodParts[len(methodParts)-2]
-	classParts := strings.Split(fullClassName, "/")
-	className := classParts[len(classParts)-1]
-	return className
+	return methodParts[len(methodParts)-2]
 }
