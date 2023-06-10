@@ -12,7 +12,7 @@ func main() {
 	myTracer := tracer.NewTracer()
 	foo := entities.NewFoo(myTracer)
 
-	foo.DoSomething()
+	foo.DoSomethingFoo()
 
 	res := myTracer.GetTraceResult()
 
