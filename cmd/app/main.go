@@ -1,10 +1,10 @@
 package main
 
 import (
-	"encoding/json"
-	"fmt"
 	"golang-tracer/internal/entities"
+	"golang-tracer/pkg/serializers"
 	"golang-tracer/pkg/tracer"
+	"os"
 )
 
 func main() {
@@ -14,8 +14,10 @@ func main() {
 
 	foo.DoSomethingFoo()
 
-	res := myTracer.GetTraceResult()
+	traceResult := myTracer.GetTraceResult()
 
-	encoded, _ := json.Marshal(res)
-	fmt.Println(string(encoded))
+	serializer := serializers.NewJSONTraceResultSerializer()
+	if err := serializer.Serialize(traceResult, os.Stdout); err != nil {
+		panic(err)
+	}
 }
