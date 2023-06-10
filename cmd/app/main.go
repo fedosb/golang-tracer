@@ -17,8 +17,13 @@ func main() {
 
 	traceResult := myTracer.GetTraceResult()
 
-	serializer := serializers.NewJSONTraceResultSerializer()
-	if err := serializer.Serialize(traceResult, os.Stdout); err != nil {
+	serializer, err := serializers.GetSerializer(serializers.FormatJSON)
+	if err != nil {
+		panic(err)
+	}
+
+	err = serializer.Serialize(traceResult, os.Stdout)
+	if err != nil {
 		panic(err)
 	}
 }

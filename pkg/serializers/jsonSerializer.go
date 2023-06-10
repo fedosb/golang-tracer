@@ -6,13 +6,13 @@ import (
 	"io"
 )
 
-type JSONTraceResultSerializer struct{}
+type jsonTraceResultSerializer struct{}
 
-func NewJSONTraceResultSerializer() *JSONTraceResultSerializer {
-	return &JSONTraceResultSerializer{}
+func newJSONTraceResultSerializer() *jsonTraceResultSerializer {
+	return &jsonTraceResultSerializer{}
 }
 
-func (j *JSONTraceResultSerializer) Serialize(traceResult *tracer.TraceResult, writer io.Writer) error {
+func (j *jsonTraceResultSerializer) Serialize(traceResult *tracer.TraceResult, writer io.Writer) error {
 	encoder := json.NewEncoder(writer)
 	encoder.SetIndent("", "  ")
 	return encoder.Encode(traceResult)
