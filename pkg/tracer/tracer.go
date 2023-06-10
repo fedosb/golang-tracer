@@ -42,6 +42,13 @@ func (t *Tracer) StartTrace() {
 func (t *Tracer) StopTrace() {
 	t.stack[len(t.stack)-1].Time += time.Since(t.startTime)
 	t.stack = t.stack[:len(t.stack)-1]
+
+	if t.stack[len(t.stack)-1].Time == 0 {
+		for _, m := range t.stack[len(t.stack)-1].Methods {
+			t.stack[len(t.stack)-1].Time += m.Time
+		}
+	}
+
 }
 
 func (t *Tracer) GetTraceResult() *TraceResult {
