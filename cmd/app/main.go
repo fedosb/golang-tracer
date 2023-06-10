@@ -1,7 +1,21 @@
 package main
 
-import "fmt"
+import (
+	"encoding/json"
+	"fmt"
+	"golang-tracer/internal/entities"
+	"golang-tracer/pkg/tracer"
+)
 
 func main() {
-	fmt.Println("Sample text")
+
+	myTracer := tracer.NewTracer()
+	foo := entities.NewFoo(myTracer)
+
+	foo.FooDoSomething()
+
+	res := myTracer.GetTraceResult()
+
+	encoded, _ := json.Marshal(res)
+	fmt.Println(string(encoded))
 }
