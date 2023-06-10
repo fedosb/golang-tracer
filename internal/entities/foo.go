@@ -15,7 +15,7 @@ func NewFoo(tracer tracer.ITracer) *Foo {
 	}
 }
 
-func (f *Foo) FooDoSomething() {
+func (f *Foo) DoSomething() {
 	f.tracer.StartTrace()
 	defer f.tracer.StopTrace()
 
