@@ -13,7 +13,7 @@ func newXMLTraceResultSerializer() *xmlTraceResultSerializer {
 }
 
 func (x *xmlTraceResultSerializer) Serialize(traceResult *tracer.TraceResult, writer io.Writer) error {
-	data, err := xml.MarshalIndent(traceResult, "", "  ")
+	data, err := xml.MarshalIndent(buildTraceResultModel(traceResult), "", "  ")
 	if err != nil {
 		return err
 	}

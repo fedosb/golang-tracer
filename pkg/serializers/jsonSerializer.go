@@ -15,5 +15,5 @@ func newJSONTraceResultSerializer() *jsonTraceResultSerializer {
 func (j *jsonTraceResultSerializer) Serialize(traceResult *tracer.TraceResult, writer io.Writer) error {
 	encoder := json.NewEncoder(writer)
 	encoder.SetIndent("", "  ")
-	return encoder.Encode(traceResult)
+	return encoder.Encode(buildTraceResultModel(traceResult))
 }

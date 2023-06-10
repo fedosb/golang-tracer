@@ -13,7 +13,7 @@ func newYAMLTraceResultSerializer() *yamlTraceResultSerializer {
 }
 
 func (y *yamlTraceResultSerializer) Serialize(traceResult *tracer.TraceResult, writer io.Writer) error {
-	data, err := yaml.Marshal(traceResult)
+	data, err := yaml.Marshal(buildTraceResultModel(traceResult))
 	if err != nil {
 		return err
 	}
