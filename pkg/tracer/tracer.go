@@ -56,7 +56,7 @@ func (t *Tracer) GetTraceResult() *TraceResult {
 }
 
 func getCallingMethodName() string {
-	pc, _, _, _ := runtime.Caller(3)
+	pc, _, _, _ := runtime.Caller(2)
 	method := runtime.FuncForPC(pc)
 	methodParts := strings.Split(method.Name(), ".")
 	return methodParts[len(methodParts)-1]
