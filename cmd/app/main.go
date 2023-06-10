@@ -13,6 +13,7 @@ func main() {
 	foo := entities.NewFoo(myTracer)
 
 	foo.DoSomethingFoo()
+	foo.DoSomethingElseFoo()
 
 	traceResult := myTracer.GetTraceResult()
 
